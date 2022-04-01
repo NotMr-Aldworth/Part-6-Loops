@@ -48,6 +48,7 @@ namespace Part_6_Loops
                 else
                     Console.WriteLine("Integer entered is not inbetween your max and min value");
             } while (midValue > maximum || midValue < minimum);
+
             
         }
             
