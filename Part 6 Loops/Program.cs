@@ -10,9 +10,9 @@ namespace Part_6_Loops
     {
         static void Main(string[] args)
         {
-            Prompter();
-
-
+            //Prompter();
+            //Percent();
+            Random();
 
 
 
@@ -20,7 +20,7 @@ namespace Part_6_Loops
         }
 
 
-    public static void Prompter()
+        public static void Prompter()
         {
             double minimum;
             double maximum;
@@ -35,7 +35,7 @@ namespace Part_6_Loops
                     Console.WriteLine("Please enter a valid integer");
                 if (maximum < minimum)
                     Console.WriteLine("Please enter a maximum that is greater than your minimum");
-            } while (maximum < minimum);
+            } while (maximum <= minimum);
             Console.WriteLine("Great!");
             Console.WriteLine("Please enter an integer in between your max and min value");
 
@@ -51,6 +51,84 @@ namespace Part_6_Loops
 
             
         }
+        public static void Percent()
+        {
+            double mark;
+            double markNmbr = 0;
+            double goodMrk = 0;
+            string done;
+
+            Console.WriteLine("Welcome to the mark calculator!");
+            Console.WriteLine("Please enter a mark for one of your classes:");
+
+            do
+            {
+                Console.WriteLine("Mark:");
+                while (!Double.TryParse(Console.ReadLine(), out mark))
+                    Console.WriteLine("Please enter a valid mark");
+                if (mark >= 0 && mark <= 50)
+                    Console.WriteLine("Please enter a valid mark");
+                else if (mark >= 51 && mark <= 60)
+                    Console.WriteLine("At least you are passing.");
+                else if (mark >= 61 && mark <= 70)
+                    Console.WriteLine("Not bad.");
+                else if (mark >= 71 && mark <= 80)
+                    Console.WriteLine("Good Mark.");
+                else if (mark >= 81 && mark <= 90)
+                    Console.WriteLine("Very Good.");
+                else if (mark >= 91 && mark <= 100)
+                    Console.WriteLine("Superb Mark.");
+                else if (mark < 0 || mark > 100)
+                    Console.WriteLine("Mark is invalid");
+                
+
+
+                if (mark >= 0 && mark <= 100)
+                    markNmbr = (markNmbr + 1);
+
+                if (mark >= 70)
+                    goodMrk = (goodMrk + 1);
+                Console.WriteLine("Finished?");
+                Console.WriteLine("Enter Y if done");
+                Console.WriteLine("Press enter to continue");
+
+                done = Console.ReadLine().ToLower();
+
+            } while (done != "y");
+
+            Console.WriteLine($"{(goodMrk / markNmbr)*100}% of your marks are above 70%");
             
+        }
+        public static void Random()
+        {
+            Random generator = new Random();
+            int min;
+            int max;
+            int i = 0;
+            Console.WriteLine("Please enter a minimum value:");
+            while (!Int32.TryParse(Console.ReadLine(), out min))
+                Console.WriteLine("Please enter a valid integer");
+            Console.WriteLine("Please enter a maximum value");
+            do
+            {
+                while (!Int32.TryParse(Console.ReadLine(), out max))
+                    Console.WriteLine("Please enter a valid integer");
+                if (max < min)
+                    Console.WriteLine("Please enter a maximum that is greater than your minimum");
+            } while (max <= min);
+            Console.WriteLine("Great!");
+            do
+            {
+                double middleNmbr = generator.Next(min, max);
+                double deci = generator.NextDouble();
+                middleNmbr = middleNmbr + deci;
+                Console.WriteLine($"{middleNmbr}");
+                i = i + 1;
+            } while (i != 25);
+
+
+        }
+
+
     }
 }
