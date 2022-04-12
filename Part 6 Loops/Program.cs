@@ -10,10 +10,10 @@ namespace Part_6_Loops
     {
         static void Main(string[] args)
         {
-            //Prompter();
-            //Percent();
+            Prompter();
+            Percent();
             Random();
-
+            OddSum();
 
 
             Console.ReadLine();
@@ -128,7 +128,32 @@ namespace Part_6_Loops
 
 
         }
+        public static void OddSum()
+        {
+            int num;
+            int change = 1;
+            int solid = 0;
+            Console.WriteLine("Please enter a number:");
+            do
+            {
+                
+                while (!Int32.TryParse(Console.ReadLine(), out num))
+                    Console.WriteLine("Invalid Input");
+                if (num <= 0)
+                    Console.WriteLine("Number must be larger than 0");
+            } while (num <= 0);
+            
 
+
+            do
+            {
+                solid = change + solid;
+                change = change + 2;
+            } while (change <= num);
+            Console.WriteLine($"The odd sum of your number is {solid}");
+
+
+        }
 
     }
 }
